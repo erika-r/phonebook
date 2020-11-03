@@ -135,18 +135,18 @@ func RemoveNumberRec(node *Bstnode, number string) *Bstnode {
         node = node.left
         return node
     }
-    leftmostrightside := node.right
+    tmp := node.right
+    //find smallest value on the right side
     for {
-        //find smallest value on the right side
-        if leftmostrightside != nil && leftmostrightside.left != nil {
-            leftmostrightside = leftmostrightside.left
+        if tmp != nil && tmp.left != nil {
+            tmp = tmp.left
         } else {
             break
         }
     }
-    node.Name = leftmostrightside.Name
-    node.Number = leftmostrightside.Number
-    node.Address = leftmostrightside.Address
+    node.Name = tmp.Name
+    node.Number = tmp.Number
+    node.Address = tmp.Address
     node.right = RemoveNumberRec(node.right, node.Number)
     return node
 }
@@ -217,8 +217,8 @@ func (b *Bst) FindNameRec(node *Bstnode, name string) *Bstnode {
 
 
 // remove name from tree 
-func (b *Bst) RemoveName(name string) *Bstnode {
-    return RemoveNameRec(b.root, name)
+func (b *Bst) RemoveName(name string) {
+    RemoveNameRec(b.root, name)
 }
 
 
@@ -247,18 +247,18 @@ func RemoveNameRec(node *Bstnode, name string) *Bstnode {
         node = node.left
         return node
     }
-    leftmostrightside := node.right
-    for {
-        //find smallest value on the right side
-        if leftmostrightside != nil && leftmostrightside.left != nil {
-            leftmostrightside = leftmostrightside.left
+    tmp := node.right
+    //find smallest value on the right side
+    for {   //infinite loop until it finds the right node
+        if tmp != nil && tmp.left != nil {
+            tmp = tmp.left
         } else {
             break
         }
     }
-    node.Name = leftmostrightside.Name
-    node.Number = leftmostrightside.Number
-    node.Address = leftmostrightside.Address
+    node.Name = tmp.Name
+    node.Number = tmp.Number
+    node.Address = tmp.Address
     node.right = RemoveNameRec(node.right, node.Name)
     return node
 }

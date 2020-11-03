@@ -29,6 +29,6 @@ func main() {
     contacts.Remove("087369121513")
 
     fmt.Printf("\n-- Showing Contacts --\n")
-    contacts.ShowAll() //works
+    contacts.ShowAll()
 
 }
