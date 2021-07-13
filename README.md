@@ -1,2 +1,2 @@
-# phonebook
-Programs written in Go and Python using different paradigms (imperative and object-oriented)
+# Phonebook Comparison
+Phonebook implementations written in Go and Python. This is a comparison of imperative and object-oriented programming paradigms.
